@@ -69,23 +69,32 @@
             // szisztoles_box
             // 
             this.szisztoles_box.Location = new System.Drawing.Point(24, 42);
+            this.szisztoles_box.MaxLength = 3;
             this.szisztoles_box.Name = "szisztoles_box";
             this.szisztoles_box.Size = new System.Drawing.Size(50, 20);
             this.szisztoles_box.TabIndex = 3;
+            this.szisztoles_box.KeyUp += new System.Windows.Forms.KeyEventHandler(this.szisztoles_box_KeyUp);
+            this.szisztoles_box.Leave += new System.EventHandler(this.szisztoles_box_Leave);
             // 
             // diasztoles_box
             // 
             this.diasztoles_box.Location = new System.Drawing.Point(112, 42);
+            this.diasztoles_box.MaxLength = 2;
             this.diasztoles_box.Name = "diasztoles_box";
             this.diasztoles_box.Size = new System.Drawing.Size(50, 20);
             this.diasztoles_box.TabIndex = 4;
+            this.diasztoles_box.KeyUp += new System.Windows.Forms.KeyEventHandler(this.diasztoles_box_KeyUp);
+            this.diasztoles_box.Leave += new System.EventHandler(this.diasztoles_box_Leave);
             // 
             // pulzus_box
             // 
             this.pulzus_box.Location = new System.Drawing.Point(196, 42);
+            this.pulzus_box.MaxLength = 2;
             this.pulzus_box.Name = "pulzus_box";
             this.pulzus_box.Size = new System.Drawing.Size(50, 20);
             this.pulzus_box.TabIndex = 5;
+            this.pulzus_box.KeyUp += new System.Windows.Forms.KeyEventHandler(this.pulzus_box_KeyUp);
+            this.pulzus_box.Leave += new System.EventHandler(this.pulzus_box_Leave);
             // 
             // gomb
             // 

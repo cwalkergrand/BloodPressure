@@ -18,13 +18,14 @@ namespace VernyomasNaplo
         public Form1()
         {
             InitializeComponent();
+            //Write();
             Watcher();
         }
 
         public enum Idopont
         {
             Reggeli = 10,
-            Delutani = 15,
+            Delutani = 14,
             Esti = 21
         }
 
@@ -43,12 +44,13 @@ namespace VernyomasNaplo
                 if (DateTime.TryParse(tag, out elozoNapDatum))
                 {
                     elozoNap = elozoNapDatum.Day;
-                } else
+                }
+                else
                 {
                     elozoNap = 0;
                 }
-                
-                
+
+
 
                 if (idopont.Day == elozoNap)
                 {
@@ -107,11 +109,11 @@ namespace VernyomasNaplo
 
         private void Write()
         {
-            MessageBox.Show("Mérd meg a vérnyomásodat!","Emlékeztető",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+            MessageBox.Show("Mérd meg a vérnyomásodat!", "Emlékeztető", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             this.Visible = true;
             this.Activate();
-            
         }
+
 
         private bool isValid(string mezo)
         {
@@ -187,6 +189,57 @@ namespace VernyomasNaplo
                 file.WriteLine(s);
             }
         }
+
+        private void szisztoles_box_KeyUp(object sender, KeyEventArgs e)
+        {
+            TabulatorLepteto(3, szisztoles_box, diasztoles_box);
+        }
+
+        private void diasztoles_box_KeyUp(object sender, KeyEventArgs e)
+        {
+            TabulatorLepteto(2, diasztoles_box, pulzus_box);
+        }
+
+        private void pulzus_box_KeyUp(object sender, KeyEventArgs e)
+        {
+            TabulatorLepteto(2, pulzus_box, gomb);
+        }
+
+        private void TabulatorLepteto(int szam, TextBox box, Control control)
+        {
+            if (box.TextLength == szam)
+            {
+                control.Focus();
+            }
+        }
+
+        private void diasztoles_box_Leave(object sender, EventArgs e)
+        {
+            FillError(diasztoles_box);
+        }
+
+        private void szisztoles_box_Leave(object sender, EventArgs e)
+        {
+            FillError(szisztoles_box);
+        }
+
+        private void pulzus_box_Leave(object sender, EventArgs e)
+        {
+            FillError(pulzus_box);
+        }
+
+        private void FillError(TextBox box)
+        {
+            if (!isValid(box.Text))
+            {
+                box.ForeColor = Color.Red;
+            }
+            else
+            {
+                box.ForeColor = Color.Black;
+            }
+        }
+
 
     }
 }
