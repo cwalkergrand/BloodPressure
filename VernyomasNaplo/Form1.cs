@@ -29,10 +29,11 @@ namespace VernyomasNaplo
             Esti = 21
         }
 
-
+        //Hogy elérhető legyen majd később is.
+        DateTime idopont = DateTime.Now;
         public void Watcher()
         {
-            DateTime idopont = DateTime.Now;
+            
             int counter = 0;
 
             //utolsó sorok beolvasása
@@ -240,6 +241,21 @@ namespace VernyomasNaplo
             }
         }
 
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            
 
+            DialogResult result = MessageBox.Show("Biztos ki szeretne lépni?\nHa bezárja az alkalmazást, a rendszer automatikusan 'Elmaradt a mérés' üzenettel bővíti az adatbázist."
+                                                    , "Megerősítés", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                FajlbaIr(idopont.ToString(@"MM\/dd\/yyyy HH:mm") + "\t" + "Elmaradt a mérés");
+            }
+            else if (result == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
+
+        }
     }
 }
